@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "quote": {
+      "QUOTE00": {
+        "context": "s28",
+        "id": "QUOTE00",
+        "quote": "s2a",
+        "year": "s2b"
+      },
+      "QUOTE01": {
+        "context": "s50",
+        "id": "QUOTE01",
+        "quote": "s52",
+        "year": "s53"
+      },
+      "QUOTE02": {
+        "context": "s78",
+        "id": "QUOTE02",
+        "quote": "s7a",
+        "year": "s7b"
+      }
+    }
+  },
+  "new": {
+    "quote": {
+      "quote_ref01": {
+        "context": "sa0",
+        "quote": "sa2",
+        "year": "sa3"
+      }
+    }
+  }
+}

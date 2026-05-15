@@ -1,0 +1,167 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Kimi Quotes API",
+    "description": "The Kimi Quotes API provides access to a collection of quotes from Finnish Formula 1 driver Kimi Räikkönen, including team radio snippets and interview quotes. Users can easily retrieve random quotes to share or browse, enhancing the fan experience with memorable lines from the racing legend.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://kimiquotes.pages.dev/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://kimiquotes.pages.dev/api",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/quote": {
+      "get": {
+        "summary": "Get a random Kimi Räikkönen quote",
+        "description": "Retrieves a random quote from Kimi Räikkönen's collection of team radio snippets and interview quotes.",
+        "operationId": "getRandomQuote",
+        "tags": [
+          "Quotes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved a random quote",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Quote"
+                },
+                "examples": {
+                  "example1": {
+                    "value": {
+                      "id": 1,
+                      "quote": "Leave me alone, I know what I'm doing!",
+                      "year": 2012,
+                      "context": "Team radio"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quotes": {
+      "get": {
+        "summary": "Get all Kimi Räikkönen quotes",
+        "description": "Retrieves the complete collection of quotes from Kimi Räikkönen, including team radio snippets and interview quotes.",
+        "operationId": "getAllQuotes",
+        "tags": [
+          "Quotes"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved all quotes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Quote"
+                  }
+                },
+                "examples": {
+                  "example1": {
+                    "value": [
+                      {
+                        "id": 1,
+                        "quote": "Leave me alone, I know what I'm doing!",
+                        "year": 2012,
+                        "context": "Team radio"
+                      },
+                      {
+                        "id": 2,
+                        "quote": "Just leave me alone, I know what to do.",
+                        "year": 2013,
+                        "context": "Team radio"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Quote": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the quote",
+            "example": 1
+          },
+          "quote": {
+            "type": "string",
+            "description": "The actual quote text from Kimi Räikkönen",
+            "example": "Leave me alone, I know what I'm doing!"
+          },
+          "year": {
+            "type": "integer",
+            "description": "The year when the quote was said",
+            "example": 2012
+          },
+          "context": {
+            "type": "string",
+            "description": "The context in which the quote was said (e.g., team radio, interview)",
+            "example": "Team radio"
+          }
+        },
+        "required": [
+          "quote"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message describing what went wrong",
+            "example": "Internal server error"
+          },
+          "message": {
+            "type": "string",
+            "description": "Detailed error message",
+            "example": "An unexpected error occurred while processing your request"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Quotes",
+      "description": "Operations related to Kimi Räikkönen quotes"
+    }
+  ]
+}
