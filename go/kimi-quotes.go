@@ -1,10 +1,10 @@
 package voxgigkimiquotessdk
 
 import (
-	"github.com/voxgig-sdk/kimi-quotes-sdk/core"
-	"github.com/voxgig-sdk/kimi-quotes-sdk/entity"
-	"github.com/voxgig-sdk/kimi-quotes-sdk/feature"
-	_ "github.com/voxgig-sdk/kimi-quotes-sdk/utility"
+	"github.com/voxgig-sdk/kimi-quotes-sdk/go/core"
+	"github.com/voxgig-sdk/kimi-quotes-sdk/go/entity"
+	"github.com/voxgig-sdk/kimi-quotes-sdk/go/feature"
+	_ "github.com/voxgig-sdk/kimi-quotes-sdk/go/utility"
 )
 
 // Type aliases preserve external API.
