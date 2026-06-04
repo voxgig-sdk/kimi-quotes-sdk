@@ -17,9 +17,7 @@ loading a specific record.
 ```ts
 import { KimiQuotesSDK } from 'kimi-quotes'
 
-const client = new KimiQuotesSDK({
-  apikey: process.env.KIMI-QUOTES_APIKEY,
-})
+const client = new KimiQuotesSDK({})
 ```
 
 ### 2. List quotes
@@ -94,7 +92,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new KimiQuotesSDK({ apikey: '...' })
+const client = new KimiQuotesSDK()
 const testClient = client.tester()
 ```
 
@@ -130,7 +128,6 @@ const logger = {
 }
 
 const client = new KimiQuotesSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -141,7 +138,6 @@ Create a `.env.local` file at the project root:
 
 ```
 KIMI-QUOTES_TEST_LIVE=TRUE
-KIMI-QUOTES_APIKEY=<your-key>
 ```
 
 Then run:
@@ -159,7 +155,6 @@ cd ts && npm test
 
 ```ts
 new KimiQuotesSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -170,7 +165,6 @@ new KimiQuotesSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

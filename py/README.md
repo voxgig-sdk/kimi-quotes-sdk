@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from kimiquotes_sdk import KimiQuotesSDK
 
-client = KimiQuotesSDK({
-    "apikey": os.environ.get("KIMI-QUOTES_APIKEY"),
-})
+client = KimiQuotesSDK({})
 ```
 
 ### 2. List quotes
@@ -130,7 +127,6 @@ Create a `.env.local` file at the project root:
 
 ```
 KIMI-QUOTES_TEST_LIVE=TRUE
-KIMI-QUOTES_APIKEY=<your-key>
 ```
 
 Then run:
@@ -154,7 +150,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |

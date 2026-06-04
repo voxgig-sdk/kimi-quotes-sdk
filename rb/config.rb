@@ -15,9 +15,6 @@ module KimiQuotesConfig
       },
       "options" => {
         "base" => "https://kimiquotes.pages.dev/api",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

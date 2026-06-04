@@ -102,7 +102,6 @@ function quote_basic_setup(extra)
     ["KIMIQUOTES_TEST_QUOTE_ENTID"] = idmap,
     ["KIMIQUOTES_TEST_LIVE"] = "FALSE",
     ["KIMIQUOTES_TEST_EXPLAIN"] = "FALSE",
-    ["KIMIQUOTES_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -114,7 +113,6 @@ function quote_basic_setup(extra)
   if env["KIMIQUOTES_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["KIMIQUOTES_APIKEY"],
       },
       extra or {},
     })
