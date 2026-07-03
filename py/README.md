@@ -10,7 +10,7 @@ The Python SDK for the KimiQuotes API — an entity-oriented client following Py
 
 ## Install
 ```bash
-pip install kimi-quotes-sdk
+pip install voxgig-sdk-kimi-quotes
 ```
 
 Or install from source:

@@ -10,13 +10,13 @@ The Ruby SDK for the KimiQuotes API — an entity-oriented client using idiomati
 
 ## Install
 ```bash
-gem install kimi-quotes-sdk
+gem install voxgig-sdk-kimi-quotes
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "kimi-quotes-sdk"
+gem "voxgig-sdk-kimi-quotes"
 ```
 
 Then run:

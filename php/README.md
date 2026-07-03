@@ -10,7 +10,7 @@ The PHP SDK for the KimiQuotes API — an entity-oriented client using PHP conve
 
 ## Install
 ```bash
-composer require voxgig/kimi-quotes-sdk
+composer require voxgig-sdk/kimi-quotes
 ```
 
 

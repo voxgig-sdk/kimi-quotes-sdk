@@ -10,7 +10,7 @@ The TypeScript SDK for the KimiQuotes API — a type-safe, entity-oriented clien
 
 ## Install
 ```bash
-npm install kimi-quotes
+npm install @voxgig-sdk/kimi-quotes
 ```
 ## Tutorial: your first API call
 
