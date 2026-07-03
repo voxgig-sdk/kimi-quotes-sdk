@@ -135,12 +135,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'KIMIQUOTES_TEST_QUOTE_ENTID': {},
     'KIMIQUOTES_TEST_LIVE': 'FALSE',
+    'KIMIQUOTES_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.KIMIQUOTES_TEST_LIVE
 
   if (live) {
     const client = new KimiQuotesSDK({
+      apikey: env.KIMIQUOTES_APIKEY,
     })
 
     let idmap: any = env['KIMIQUOTES_TEST_QUOTE_ENTID']

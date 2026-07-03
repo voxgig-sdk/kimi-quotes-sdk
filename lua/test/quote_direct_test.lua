@@ -107,12 +107,14 @@ function quote_direct_setup(mockres)
   local env = runner.env_override({
     ["KIMIQUOTES_TEST_QUOTE_ENTID"] = {},
     ["KIMIQUOTES_TEST_LIVE"] = "FALSE",
+    ["KIMIQUOTES_APIKEY"] = "NONE",
   })
 
   local live = env["KIMIQUOTES_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["KIMIQUOTES_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

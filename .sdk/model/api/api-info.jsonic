@@ -16,20 +16,7 @@ main: {
       ]
       title: "Kimi Quotes API"
       version: "1.0.0"
-      tagline: "Random and bulk quotes from Formula 1 driver Kimi Raikkonen, including team radio snippets and interview lines"
-      homepage: "https://kimiquotes.pages.dev/api"
-      docs_url: "https://freepublicapis.com/kimi-quotes-api"
-      about_md: `The Kimi Quotes API is a small, free, no-auth service that returns quotes attributed to Finnish Formula 1 driver Kimi Raikkonen, drawn from team radio exchanges and press interviews. It is hosted on Cloudflare Pages at [kimiquotes.pages.dev](https://kimiquotes.pages.dev/api).
-
-What you get from the API:
-- A random quote on demand
-- The full collection of quotes in a single call
-
-The service is public and unauthenticated. CORS is disabled on the endpoints, so calls are best made from a server or proxy rather than directly from a browser. No published rate limits, licence terms, or attribution requirements were found at the time of writing.`
-      entity_desc: {
-        quote: "A single Kimi Raikkonen utterance; fetch one at random via `GET /api/quote` or the whole list via `GET /api/quotes`."
-      }
-      auth: false
     }
   }
 }
+

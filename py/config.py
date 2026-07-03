@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://kimiquotes.pages.dev/api",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -26,78 +29,78 @@ def make_config():
       "quote": {
         "fields": [
           {
+            "active": True,
             "name": "context",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "id",
             "req": False,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "quote",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "year",
             "req": False,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "quote",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/quotes",
                 "parts": [
                   "quotes",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/quote",
                 "parts": [
                   "quote",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
-                  "res": "`body`",
+                  "res": "`body.quote`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

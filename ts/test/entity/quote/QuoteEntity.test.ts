@@ -120,6 +120,7 @@ function basicSetup(extra?: any) {
     'KIMI_QUOTES_TEST_QUOTE_ENTID': idmap,
     'KIMI_QUOTES_TEST_LIVE': 'FALSE',
     'KIMI_QUOTES_TEST_EXPLAIN': 'FALSE',
+    'KIMI_QUOTES_APIKEY': 'NONE',
   })
 
   idmap = env['KIMI_QUOTES_TEST_QUOTE_ENTID']
@@ -129,6 +130,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new KimiQuotesSDK(merge([
       {
+        apikey: env.KIMI_QUOTES_APIKEY,
       },
       extra
     ]))

@@ -1,18 +1,8 @@
 # KimiQuotes SDK
 
-Random and bulk quotes from Formula 1 driver Kimi Raikkonen, including team radio snippets and interview lines
+Kimi Quotes API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Kimi Quotes API
-
-The Kimi Quotes API is a small, free, no-auth service that returns quotes attributed to Finnish Formula 1 driver Kimi Raikkonen, drawn from team radio exchanges and press interviews. It is hosted on Cloudflare Pages at [kimiquotes.pages.dev](https://kimiquotes.pages.dev/api).
-
-What you get from the API:
-- A random quote on demand
-- The full collection of quotes in a single call
-
-The service is public and unauthenticated. CORS is disabled on the endpoints, so calls are best made from a server or proxy rather than directly from a browser. No published rate limits, licence terms, or attribution requirements were found at the time of writing.
 
 ## Try it
 
@@ -46,29 +36,31 @@ gem install kimi-quotes-sdk
 luarocks install kimi-quotes-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { KimiQuotesSDK } from 'kimi-quotes'
 
-const client = new KimiQuotesSDK({})
+const client = new KimiQuotesSDK({
+  apikey: process.env.KIMI-QUOTES_APIKEY,
+})
 
 // List all quotes
 const quotes = await client.Quote().list()
+console.log(quotes.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -98,7 +90,7 @@ The API exposes one entity:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Quote** | A single Kimi Raikkonen utterance; fetch one at random via `GET /api/quote` or the whole list via `GET /api/quotes`. | `/quotes` |
+| **Quote** |  | `/quotes` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -108,17 +100,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from kimiquotes_sdk import KimiQuotesSDK
 
-client = KimiQuotesSDK({})
+client = KimiQuotesSDK({
+    "apikey": os.environ.get("KIMI-QUOTES_APIKEY"),
+})
 
 # List all quotes
-quotes, err = client.Quote(None).list(None, None)
+quotes, err = client.Quote().list()
+print(quotes)
 
 # Load a specific quote
-quote, err = client.Quote(None).load(
-    {"id": "example_id"}, None
-)
+quote, err = client.Quote().load({"id": "example_id"})
+print(quote)
 ```
 
 ### PHP
@@ -127,15 +122,17 @@ quote, err = client.Quote(None).load(
 <?php
 require_once 'kimiquotes_sdk.php';
 
-$client = new KimiQuotesSDK([]);
+$client = new KimiQuotesSDK([
+    "apikey" => getenv("KIMI-QUOTES_APIKEY"),
+]);
 
 // List all quotes
-[$quotes, $err] = $client->Quote(null)->list(null, null);
+[$quotes, $err] = $client->Quote()->list();
+print_r($quotes);
 
 // Load a specific quote
-[$quote, $err] = $client->Quote(null)->load(
-    ["id" => "example_id"], null
-);
+[$quote, $err] = $client->Quote()->load(["id" => "example_id"]);
+print_r($quote);
 ```
 
 ### Golang
@@ -143,10 +140,13 @@ $client = new KimiQuotesSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/kimi-quotes-sdk/go"
 
-client := sdk.NewKimiQuotesSDK(map[string]any{})
+client := sdk.NewKimiQuotesSDK(map[string]any{
+    "apikey": os.Getenv("KIMI-QUOTES_APIKEY"),
+})
 
 // List all quotes
 quotes, err := client.Quote(nil).List(nil, nil)
+fmt.Println(quotes)
 ```
 
 ### Ruby
@@ -154,15 +154,17 @@ quotes, err := client.Quote(nil).List(nil, nil)
 ```ruby
 require_relative "KimiQuotes_sdk"
 
-client = KimiQuotesSDK.new({})
+client = KimiQuotesSDK.new({
+  "apikey" => ENV["KIMI-QUOTES_APIKEY"],
+})
 
 # List all quotes
-quotes, err = client.Quote(nil).list(nil, nil)
+quotes, err = client.Quote().list
+puts quotes
 
 # Load a specific quote
-quote, err = client.Quote(nil).load(
-  { "id" => "example_id" }, nil
-)
+quote, err = client.Quote().load({ "id" => "example_id" })
+puts quote
 ```
 
 ### Lua
@@ -170,15 +172,17 @@ quote, err = client.Quote(nil).load(
 ```lua
 local sdk = require("kimi-quotes_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("KIMI-QUOTES_APIKEY"),
+})
 
 -- List all quotes
-local quotes, err = client:Quote(nil):list(nil, nil)
+local quotes, err = client:Quote():list()
+print(quotes)
 
 -- Load a specific quote
-local quote, err = client:Quote(nil):load(
-  { id = "example_id" }, nil
-)
+local quote, err = client:Quote():load({ id = "example_id" })
+print(quote)
 ```
 
 ## Unit testing in offline mode
@@ -197,25 +201,21 @@ const result = await client.Quote().load({ id: 'test01' })
 ### Python
 
 ```python
-client = KimiQuotesSDK.test(None, None)
-result, err = client.Quote(None).load(
-    {"id": "test01"}, None
-)
+client = KimiQuotesSDK.test()
+result, err = client.Quote().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = KimiQuotesSDK::test(null, null);
-[$result, $err] = $client->Quote(null)->load(
-    ["id" => "test01"], null
-);
+$client = KimiQuotesSDK::test();
+[$result, $err] = $client->Quote()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Quote(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -224,19 +224,15 @@ result, err := client.Quote(nil).Load(
 ### Ruby
 
 ```ruby
-client = KimiQuotesSDK.test(nil, nil)
-result, err = client.Quote(nil).load(
-  { "id" => "test01" }, nil
-)
+client = KimiQuotesSDK.test
+result, err = client.Quote().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Quote(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Quote():load({ id = "test01" })
 ```
 
 ## How it works
@@ -340,11 +336,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Kimi Quotes API
-
-- Upstream: [https://kimiquotes.pages.dev/api](https://kimiquotes.pages.dev/api)
-- API docs: [https://freepublicapis.com/kimi-quotes-api](https://freepublicapis.com/kimi-quotes-api)
 
 ---
 

@@ -96,6 +96,7 @@ function quote_basic_setup($extra)
         "KIMIQUOTES_TEST_QUOTE_ENTID" => $idmap,
         "KIMIQUOTES_TEST_LIVE" => "FALSE",
         "KIMIQUOTES_TEST_EXPLAIN" => "FALSE",
+        "KIMIQUOTES_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -107,6 +108,7 @@ function quote_basic_setup($extra)
     if ($env["KIMIQUOTES_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["KIMIQUOTES_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -113,12 +113,14 @@ function quote_direct_setup($mockres)
     $env = Runner::env_override([
         "KIMIQUOTES_TEST_QUOTE_ENTID" => [],
         "KIMIQUOTES_TEST_LIVE" => "FALSE",
+        "KIMIQUOTES_APIKEY" => "NONE",
     ]);
 
     $live = $env["KIMIQUOTES_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["KIMIQUOTES_APIKEY"],
         ];
         $client = new KimiQuotesSDK($merged_opts);
         return [

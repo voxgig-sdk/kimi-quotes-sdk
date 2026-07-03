@@ -99,12 +99,14 @@ def _quote_direct_setup(mockres):
     env = runner.env_override({
         "KIMIQUOTES_TEST_QUOTE_ENTID": {},
         "KIMIQUOTES_TEST_LIVE": "FALSE",
+        "KIMIQUOTES_APIKEY": "NONE",
     })
 
     live = env.get("KIMIQUOTES_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("KIMIQUOTES_APIKEY"),
         }
         client = KimiQuotesSDK(merged_opts)
         return {
