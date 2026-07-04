@@ -61,7 +61,7 @@ main: kit: entity: quote: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body.quote`"
+            res: "`body`"
           }
         }
       ]
