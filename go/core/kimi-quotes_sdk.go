@@ -245,6 +245,9 @@ func (sdk *KimiQuotesSDK) Direct(fetchargs map[string]any) (map[string]any, erro
 }
 
 
+// Quote returns a Quote entity bound to this client.
+// Idiomatic usage: client.Quote(nil).List(nil, nil) or
+// client.Quote(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *KimiQuotesSDK) Quote(data map[string]any) KimiQuotesEntity {
 	return NewQuoteEntityFunc(sdk, data)
 }
