@@ -26,9 +26,12 @@ class Quote(QuoteRequired, total=False):
     year: int
 
 
-class QuoteLoadMatch(TypedDict, total=False):
-    context: str
+class QuoteLoadMatchRequired(TypedDict):
     id: int
+
+
+class QuoteLoadMatch(QuoteLoadMatchRequired, total=False):
+    context: str
     quote: str
     year: int
 

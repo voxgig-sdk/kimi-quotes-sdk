@@ -29,13 +29,13 @@ Quote = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Quote#load (any subset of Quote fields).
+# Request payload for Quote#load.
 #
 # @!attribute [rw] context
 #   @return [String, nil]
 #
 # @!attribute [rw] id
-#   @return [Integer, nil]
+#   @return [Integer]
 #
 # @!attribute [rw] quote
 #   @return [String, nil]
@@ -50,7 +50,7 @@ QuoteLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Quote#list (any subset of Quote fields).
+# Request payload for Quote#list.
 #
 # @!attribute [rw] context
 #   @return [String, nil]

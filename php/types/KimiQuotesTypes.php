@@ -21,16 +21,16 @@ class Quote
     public ?int $year = null;
 }
 
-/** Match filter for Quote#load (any subset of Quote fields). */
+/** Request payload for Quote#load. */
 class QuoteLoadMatch
 {
     public ?string $context = null;
-    public ?int $id = null;
+    public int $id;
     public ?string $quote = null;
     public ?int $year = null;
 }
 
-/** Match filter for Quote#list (any subset of Quote fields). */
+/** Request payload for Quote#list. */
 class QuoteListMatch
 {
     public ?string $context = null;

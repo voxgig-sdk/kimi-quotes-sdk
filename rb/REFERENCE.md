@@ -8,7 +8,7 @@ Complete API reference for the KimiQuotes Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'kimi-quotes_sdk'
+require_relative 'KimiQuotes_sdk'
 
 client = KimiQuotesSDK.new(options)
 ```
@@ -93,19 +93,19 @@ quote = client.Quote
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `quote` | ``$STRING`` | Yes |  |
-| `year` | ``$INTEGER`` | No |  |
+| `context` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `quote` | `String` | Yes |  |
+| `year` | `Integer` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Quote.list(nil)
+results = client.Quote.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

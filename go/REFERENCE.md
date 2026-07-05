@@ -97,10 +97,10 @@ quote := client.Quote(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `quote` | ``$STRING`` | Yes |  |
-| `year` | ``$INTEGER`` | No |  |
+| `context` | `string` | No |  |
+| `id` | `int` | No |  |
+| `quote` | `string` | Yes |  |
+| `year` | `int` | No |  |
 
 ### Operations
 

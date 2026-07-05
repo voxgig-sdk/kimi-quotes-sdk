@@ -116,10 +116,10 @@ const quote = client.Quote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `quote` | ``$STRING`` | Yes |  |
-| `year` | ``$INTEGER`` | No |  |
+| `context` | `string` | No |  |
+| `id` | `number` | No |  |
+| `quote` | `string` | Yes |  |
+| `year` | `number` | No |  |
 
 ### Operations
 
@@ -136,7 +136,7 @@ const results = await client.Quote().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Quote().load({ id: 'quote_id' })
+const result = await client.Quote().load({ id: 1 })
 ```
 
 ### Common Methods

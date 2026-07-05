@@ -13,8 +13,16 @@
 ---@field year? number
 
 ---@class QuoteLoadMatch
+---@field context? string
+---@field id number
+---@field quote? string
+---@field year? number
 
 ---@class QuoteListMatch
+---@field context? string
+---@field id? number
+---@field quote? string
+---@field year? number
 
 local M = {}
 

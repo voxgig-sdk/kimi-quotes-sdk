@@ -8,7 +8,7 @@ Complete API reference for the KimiQuotes Python SDK.
 ### Constructor
 
 ```python
-from kimi-quotes_sdk import KimiQuotesSDK
+from kimiquotes_sdk import KimiQuotesSDK
 
 client = KimiQuotesSDK(options)
 ```
@@ -87,19 +87,19 @@ quote = client.Quote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `quote` | ``$STRING`` | Yes |  |
-| `year` | ``$INTEGER`` | No |  |
+| `context` | `str` | No |  |
+| `id` | `int` | No |  |
+| `quote` | `str` | Yes |  |
+| `year` | `int` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Quote().list({})
+results = client.Quote().list()
 for quote in results:
     print(quote)
 ```

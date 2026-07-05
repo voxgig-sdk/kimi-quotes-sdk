@@ -12,7 +12,17 @@ export interface Quote {
   year?: number
 }
 
-export type QuoteLoadMatch = Partial<Quote>
+export interface QuoteLoadMatch {
+  context?: string
+  id: number
+  quote?: string
+  year?: number
+}
 
-export type QuoteListMatch = Partial<Quote>
+export interface QuoteListMatch {
+  context?: string
+  id?: number
+  quote?: string
+  year?: number
+}
 

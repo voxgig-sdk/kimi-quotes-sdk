@@ -16,17 +16,15 @@ type Quote struct {
 	Year *int `json:"year,omitempty"`
 }
 
-// QuoteLoadMatch mirrors the quote fields as an all-optional match
-// filter (Go analog of Partial<Quote>).
+// QuoteLoadMatch is the typed request payload for Quote.LoadTyped.
 type QuoteLoadMatch struct {
 	Context *string `json:"context,omitempty"`
-	Id *int `json:"id,omitempty"`
+	Id int `json:"id"`
 	Quote *string `json:"quote,omitempty"`
 	Year *int `json:"year,omitempty"`
 }
 
-// QuoteListMatch mirrors the quote fields as an all-optional match
-// filter (Go analog of Partial<Quote>).
+// QuoteListMatch is the typed request payload for Quote.ListTyped.
 type QuoteListMatch struct {
 	Context *string `json:"context,omitempty"`
 	Id *int `json:"id,omitempty"`
