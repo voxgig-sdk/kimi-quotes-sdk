@@ -15,9 +15,9 @@ main: {
           url: "https://kimiquotes.pages.dev/api"
         }
       ]
+      summary: "The Kimi Quotes API provides access to a collection of quotes from Finnish Formula 1 driver Kimi Räikkönen, including team radio snippets and interview quotes."
       title: "Kimi Quotes API"
       version: "1.0.0"
+      website: "https://kimiquotes.pages.dev"
     }
   }
-}
-
