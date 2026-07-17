@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- KimiQuotes SDK exists test
 
 local sdk = require("kimi-quotes_sdk")
 
