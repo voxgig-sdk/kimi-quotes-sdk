@@ -19,11 +19,15 @@ import {
 describe('QuoteDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when KIMIQUOTES_TEST_LIVE=TRUE.
-  afterEach(liveDelay('KIMIQUOTES_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when KIMI_QUOTES_TEST_LIVE=TRUE.
+  afterEach(liveDelay('KIMI_QUOTES_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new KimiQuotesSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -133,17 +137,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'KIMIQUOTES_TEST_QUOTE_ENTID': {},
-    'KIMIQUOTES_TEST_LIVE': 'FALSE',
+    'KIMI_QUOTES_TEST_QUOTE_ENTID': {},
+    'KIMI_QUOTES_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.KIMIQUOTES_TEST_LIVE
+  const live = 'TRUE' === env.KIMI_QUOTES_TEST_LIVE
 
   if (live) {
     const client = new KimiQuotesSDK({
     })
 
-    let idmap: any = env['KIMIQUOTES_TEST_QUOTE_ENTID']
+    let idmap: any = env['KIMI_QUOTES_TEST_QUOTE_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

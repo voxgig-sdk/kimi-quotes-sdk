@@ -111,11 +111,11 @@ function quote_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "KIMIQUOTES_TEST_QUOTE_ENTID" => [],
-        "KIMIQUOTES_TEST_LIVE" => "FALSE",
+        "KIMI_QUOTES_TEST_QUOTE_ENTID" => [],
+        "KIMI_QUOTES_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["KIMIQUOTES_TEST_LIVE"] === "TRUE";
+    $live = $env["KIMI_QUOTES_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

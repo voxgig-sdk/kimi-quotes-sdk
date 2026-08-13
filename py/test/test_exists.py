@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# KimiQuotes SDK exists test
 
 import pytest
 from kimiquotes_sdk import KimiQuotesSDK

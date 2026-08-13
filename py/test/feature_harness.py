@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import KimiQuotesControl
-from core.error import KimiQuotesError
-from core.result import KimiQuotesResult
-from core.spec import KimiQuotesSpec
+from kimiquotes_sdk.config import make_config
+from kimiquotes_sdk.features import _make_feature
+from kimiquotes_sdk.core.control import KimiQuotesControl
+from kimiquotes_sdk.core.error import KimiQuotesError
+from kimiquotes_sdk.core.result import KimiQuotesResult
+from kimiquotes_sdk.core.spec import KimiQuotesSpec
 
 
 # True when this SDK was generated with the named feature.

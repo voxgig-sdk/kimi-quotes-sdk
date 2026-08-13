@@ -105,11 +105,11 @@ function quote_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["KIMIQUOTES_TEST_QUOTE_ENTID"] = {},
-    ["KIMIQUOTES_TEST_LIVE"] = "FALSE",
+    ["KIMI_QUOTES_TEST_QUOTE_ENTID"] = {},
+    ["KIMI_QUOTES_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["KIMIQUOTES_TEST_LIVE"] == "TRUE"
+  local live = env["KIMI_QUOTES_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

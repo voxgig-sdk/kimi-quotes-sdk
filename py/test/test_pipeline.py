@@ -16,11 +16,11 @@
 import pytest
 
 from kimiquotes_sdk import KimiQuotesSDK
-from core.error import KimiQuotesError
-from core.result import KimiQuotesResult
-from core.response import KimiQuotesResponse
-from core.spec import KimiQuotesSpec
-from feature.base_feature import KimiQuotesBaseFeature
+from kimiquotes_sdk.core.error import KimiQuotesError
+from kimiquotes_sdk.core.result import KimiQuotesResult
+from kimiquotes_sdk.core.response import KimiQuotesResponse
+from kimiquotes_sdk.core.spec import KimiQuotesSpec
+from kimiquotes_sdk.feature.base_feature import KimiQuotesBaseFeature
 
 
 def _client():

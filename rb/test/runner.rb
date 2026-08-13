@@ -23,8 +23,8 @@ module KimiQuotesTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("KIMIQUOTES_TEST_LIVE")
-    override = getenv("KIMIQUOTES_TEST_OVERRIDE")
+    live = getenv("KIMI_QUOTES_TEST_LIVE")
+    override = getenv("KIMI_QUOTES_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module KimiQuotesTestRunner
       end
     end
 
-    explain = getenv("KIMIQUOTES_TEST_EXPLAIN")
-    m["KIMIQUOTES_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("KIMI_QUOTES_TEST_EXPLAIN")
+    m["KIMI_QUOTES_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

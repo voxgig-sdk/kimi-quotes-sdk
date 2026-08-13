@@ -43,8 +43,8 @@ class KimiQuotesTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('KIMIQUOTES_TEST_LIVE');
-        $override = self::getenv('KIMIQUOTES_TEST_OVERRIDE');
+        $live = self::getenv('KIMI_QUOTES_TEST_LIVE');
+        $override = self::getenv('KIMI_QUOTES_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class KimiQuotesTestRunner
             }
         }
 
-        $explain = self::getenv('KIMIQUOTES_TEST_EXPLAIN');
+        $explain = self::getenv('KIMI_QUOTES_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['KIMIQUOTES_TEST_EXPLAIN'] = $explain;
+            $m['KIMI_QUOTES_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

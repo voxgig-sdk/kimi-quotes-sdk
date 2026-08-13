@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from kimiquotes_sdk.utility.voxgig_struct import voxgig_struct as vs
 from kimiquotes_sdk import KimiQuotesSDK
-from core import helpers
+from kimiquotes_sdk.core import helpers
 from test import runner
 
 
@@ -95,11 +95,11 @@ def _quote_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "KIMIQUOTES_TEST_QUOTE_ENTID": {},
-        "KIMIQUOTES_TEST_LIVE": "FALSE",
+        "KIMI_QUOTES_TEST_QUOTE_ENTID": {},
+        "KIMI_QUOTES_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("KIMIQUOTES_TEST_LIVE") == "TRUE"
+    live = env.get("KIMI_QUOTES_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

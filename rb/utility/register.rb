@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ KimiQuotesUtility.registrar = ->(u) {
   u.prepare_params = KimiQuotesUtilities::PrepareParams
   u.prepare_path = KimiQuotesUtilities::PreparePath
   u.prepare_query = KimiQuotesUtilities::PrepareQuery
+  u.graphql_body = KimiQuotesUtilities::GraphqlBody
+  u.graphql_errors = KimiQuotesUtilities::GraphqlErrors
   u.result_basic = KimiQuotesUtilities::ResultBasic
   u.result_body = KimiQuotesUtilities::ResultBody
   u.result_headers = KimiQuotesUtilities::ResultHeaders

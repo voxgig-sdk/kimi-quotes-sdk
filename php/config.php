@@ -68,6 +68,7 @@ class KimiQuotesConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/quotes',
                   'parts' => [
@@ -90,6 +91,7 @@ class KimiQuotesConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/quote',
                   'parts' => [

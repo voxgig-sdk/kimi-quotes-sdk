@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ KimiQuotesUtility::setRegistrar(function (KimiQuotesUtility $u): void {
     $u->prepare_params = [KimiQuotesPrepareParams::class, 'call'];
     $u->prepare_path = [KimiQuotesPreparePath::class, 'call'];
     $u->prepare_query = [KimiQuotesPrepareQuery::class, 'call'];
+    $u->graphql_body = [KimiQuotesGraphql::class, 'body'];
+    $u->graphql_errors = [KimiQuotesGraphql::class, 'errors'];
     $u->result_basic = [KimiQuotesResultBasic::class, 'call'];
     $u->result_body = [KimiQuotesResultBody::class, 'call'];
     $u->result_headers = [KimiQuotesResultHeaders::class, 'call'];

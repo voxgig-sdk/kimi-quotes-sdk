@@ -63,6 +63,7 @@ module KimiQuotesConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quotes",
                   "parts" => [
@@ -85,6 +86,7 @@ module KimiQuotesConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quote",
                   "parts" => [
