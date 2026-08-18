@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from kimiquotes_sdk.config import make_config
+from kimiquotes_sdk.config import shared_config
 from kimiquotes_sdk.features import _make_feature
 from kimiquotes_sdk.core.control import KimiQuotesControl
 from kimiquotes_sdk.core.error import KimiQuotesError
@@ -24,7 +24,7 @@ from kimiquotes_sdk.core.spec import KimiQuotesSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

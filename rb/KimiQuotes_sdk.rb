@@ -28,7 +28,7 @@ class KimiQuotesSDK
     utility = KimiQuotesUtility.new
     @_utility = utility
 
-    config = KimiQuotesConfig.make_config
+    config = KimiQuotesConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

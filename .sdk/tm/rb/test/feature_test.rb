@@ -15,7 +15,7 @@ require_relative "../KimiQuotes_sdk"
 module KimiQuotesFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = KimiQuotesConfig.make_config["feature"]
+    f = KimiQuotesConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

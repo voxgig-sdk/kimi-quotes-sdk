@@ -23,7 +23,7 @@ func NewKimiQuotesSDK(options map[string]any) *KimiQuotesSDK {
 
 	sdk.utility = NewUtility()
 
-	config := MakeConfig()
+	config := SharedConfig()
 
 	sdk.rootctx = sdk.utility.MakeContext(map[string]any{
 		"client":  sdk,

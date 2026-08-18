@@ -40,7 +40,7 @@ class KimiQuotesSDK
         $utility = new KimiQuotesUtility();
         $this->_utility = $utility;
 
-        $config = KimiQuotesConfig::make_config();
+        $config = KimiQuotesConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
