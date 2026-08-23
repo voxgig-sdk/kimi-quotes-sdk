@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -302,10 +302,10 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `context` |  |
-| `id` |  |
-| `quote` |  |
-| `year` |  |
+| `context` | The context in which the quote was said (e.g., team radio, interview) |
+| `id` | Unique identifier for the quote |
+| `quote` | The actual quote text from Kimi Räikkönen |
+| `year` | The year when the quote was said |
 
 Operations: list, load.
 
@@ -331,10 +331,10 @@ Create an instance: `const quote = client.Quote()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `context` | `string` |  |
-| `id` | `number` |  |
-| `quote` | `string` |  |
-| `year` | `number` |  |
+| `context` | `string` | The context in which the quote was said (e.g., team radio, interview) |
+| `id` | `number` | Unique identifier for the quote |
+| `quote` | `string` | The actual quote text from Kimi Räikkönen |
+| `year` | `number` | The year when the quote was said |
 
 #### Example: Load
 

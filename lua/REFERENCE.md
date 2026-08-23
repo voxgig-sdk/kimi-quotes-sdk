@@ -90,10 +90,10 @@ local quote = client:Quote(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | `string` | No |  |
-| `id` | `number` | No |  |
-| `quote` | `string` | Yes |  |
-| `year` | `number` | No |  |
+| `context` | `string` | No | The context in which the quote was said (e.g., team radio, interview) |
+| `id` | `number` | No | Unique identifier for the quote |
+| `quote` | `string` | Yes | The actual quote text from Kimi Räikkönen |
+| `year` | `number` | No | The year when the quote was said |
 
 ### Operations
 

@@ -19,6 +19,9 @@ module KimiQuotesConfig
     {
       "main" => {
         "name" => "KimiQuotes",
+        "slug" => "kimi-quotes",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -41,19 +44,23 @@ module KimiQuotesConfig
           "fields" => [
             {
               "name" => "context",
+              "short" => "The context in which the quote was said (e.g., team radio, interview)",
               "type" => "`$STRING`",
             },
             {
               "name" => "id",
+              "short" => "Unique identifier for the quote",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "quote",
               "req" => true,
+              "short" => "The actual quote text from Kimi Räikkönen",
               "type" => "`$STRING`",
             },
             {
               "name" => "year",
+              "short" => "The year when the quote was said",
               "type" => "`$INTEGER`",
             },
           ],

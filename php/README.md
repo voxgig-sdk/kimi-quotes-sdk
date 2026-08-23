@@ -263,10 +263,10 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `context` |  |
-| `id` |  |
-| `quote` |  |
-| `year` |  |
+| `context` | The context in which the quote was said (e.g., team radio, interview) |
+| `id` | Unique identifier for the quote |
+| `quote` | The actual quote text from Kimi Räikkönen |
+| `year` | The year when the quote was said |
 
 Operations: List, Load.
 
@@ -292,10 +292,10 @@ Create an instance: `$quote = $client->Quote();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `context` | `string` |  |
-| `id` | `int` |  |
-| `quote` | `string` |  |
-| `year` | `int` |  |
+| `context` | `string` | The context in which the quote was said (e.g., team radio, interview) |
+| `id` | `int` | Unique identifier for the quote |
+| `quote` | `string` | The actual quote text from Kimi Räikkönen |
+| `year` | `int` | The year when the quote was said |
 
 #### Example: Load
 

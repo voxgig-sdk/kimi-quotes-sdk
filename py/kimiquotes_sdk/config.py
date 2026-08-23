@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "KimiQuotes",
+            "slug": "kimi-quotes",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -50,19 +53,23 @@ def make_config():
         "fields": [
           {
             "name": "context",
+            "short": "The context in which the quote was said (e.g., team radio, interview)",
             "type": "`$STRING`",
           },
           {
             "name": "id",
+            "short": "Unique identifier for the quote",
             "type": "`$INTEGER`",
           },
           {
             "name": "quote",
             "req": True,
+            "short": "The actual quote text from Kimi Räikkönen",
             "type": "`$STRING`",
           },
           {
             "name": "year",
+            "short": "The year when the quote was said",
             "type": "`$INTEGER`",
           },
         ],

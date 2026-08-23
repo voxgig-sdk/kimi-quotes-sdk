@@ -253,10 +253,10 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `context` |  |
-| `id` |  |
-| `quote` |  |
-| `year` |  |
+| `context` | The context in which the quote was said (e.g., team radio, interview) |
+| `id` | Unique identifier for the quote |
+| `quote` | The actual quote text from Kimi Räikkönen |
+| `year` | The year when the quote was said |
 
 Operations: List, Load.
 
@@ -282,10 +282,10 @@ Create an instance: `quote = client.Quote`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `context` | `String` |  |
-| `id` | `Integer` |  |
-| `quote` | `String` |  |
-| `year` | `Integer` |  |
+| `context` | `String` | The context in which the quote was said (e.g., team radio, interview) |
+| `id` | `Integer` | Unique identifier for the quote |
+| `quote` | `String` | The actual quote text from Kimi Räikkönen |
+| `year` | `Integer` | The year when the quote was said |
 
 #### Example: Load
 

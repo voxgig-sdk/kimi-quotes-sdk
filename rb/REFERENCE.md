@@ -93,10 +93,10 @@ quote = client.Quote
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `quote` | `String` | Yes |  |
-| `year` | `Integer` | No |  |
+| `context` | `String` | No | The context in which the quote was said (e.g., team radio, interview) |
+| `id` | `Integer` | No | Unique identifier for the quote |
+| `quote` | `String` | Yes | The actual quote text from Kimi Räikkönen |
+| `year` | `Integer` | No | The year when the quote was said |
 
 ### Operations
 

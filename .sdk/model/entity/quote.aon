@@ -8,21 +8,25 @@ main: kit: entity: quote: {
     {
       name: "context"
       req: false
+      short: "The context in which the quote was said (e.g., team radio, interview)"
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "Unique identifier for the quote"
       type: "`$INTEGER`"
     }
     {
       name: "quote"
       req: true
+      short: "The actual quote text from Kimi Räikkönen"
       type: "`$STRING`"
     }
     {
       name: "year"
       req: false
+      short: "The year when the quote was said"
       type: "`$INTEGER`"
     }
   ]

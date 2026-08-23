@@ -36,24 +36,28 @@
               "active": true,
               "name": "context",
               "req": false,
+              "short": "The context in which the quote was said (e.g., team radio, interview)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the quote",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "quote",
               "req": true,
+              "short": "The actual quote text from Kimi Räikkönen",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "year",
               "req": false,
+              "short": "The year when the quote was said",
               "type": "`$INTEGER`"
             }
           ],

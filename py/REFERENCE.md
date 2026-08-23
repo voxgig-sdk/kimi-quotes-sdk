@@ -87,10 +87,10 @@ quote = client.Quote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | `str` | No |  |
-| `id` | `int` | No |  |
-| `quote` | `str` | Yes |  |
-| `year` | `int` | No |  |
+| `context` | `str` | No | The context in which the quote was said (e.g., team radio, interview) |
+| `id` | `int` | No | Unique identifier for the quote |
+| `quote` | `str` | Yes | The actual quote text from Kimi Räikkönen |
+| `year` | `int` | No | The year when the quote was said |
 
 ### Operations
 

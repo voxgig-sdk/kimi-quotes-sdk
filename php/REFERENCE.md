@@ -92,10 +92,10 @@ $quote = $client->Quote();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `context` | `string` | No |  |
-| `id` | `int` | No |  |
-| `quote` | `string` | Yes |  |
-| `year` | `int` | No |  |
+| `context` | `string` | No | The context in which the quote was said (e.g., team radio, interview) |
+| `id` | `int` | No | Unique identifier for the quote |
+| `quote` | `string` | Yes | The actual quote text from Kimi Räikkönen |
+| `year` | `int` | No | The year when the quote was said |
 
 ### Operations
 

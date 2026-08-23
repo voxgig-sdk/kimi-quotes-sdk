@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "KimiQuotes",
+			"slug": "kimi-quotes",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -33,19 +36,23 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "context",
+						"short": "The context in which the quote was said (e.g., team radio, interview)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the quote",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "quote",
 						"req": true,
+						"short": "The actual quote text from Kimi Räikkönen",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "year",
+						"short": "The year when the quote was said",
 						"type": "`$INTEGER`",
 					},
 				},

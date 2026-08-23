@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'KimiQuotes',
+        slug: "kimi-quotes",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -56,19 +67,23 @@ class Config {
       "fields": [
         {
           "name": "context",
+          "short": "The context in which the quote was said (e.g., team radio, interview)",
           "type": "`$STRING`"
         },
         {
           "name": "id",
+          "short": "Unique identifier for the quote",
           "type": "`$INTEGER`"
         },
         {
           "name": "quote",
           "req": true,
+          "short": "The actual quote text from Kimi Räikkönen",
           "type": "`$STRING`"
         },
         {
           "name": "year",
+          "short": "The year when the quote was said",
           "type": "`$INTEGER`"
         }
       ],
