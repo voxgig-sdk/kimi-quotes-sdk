@@ -44,8 +44,10 @@ main: kit: entity: quote: {
         {
           method: "GET"
           orig: "/quotes"
-          parts: [
-            "quotes"
+          segments: [
+            {
+              lit: "quotes"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -60,8 +62,10 @@ main: kit: entity: quote: {
         {
           method: "GET"
           orig: "/quote"
-          parts: [
-            "quote"
+          segments: [
+            {
+              lit: "quote"
+            }
           ]
           transform: {
             req: "`reqdata`"

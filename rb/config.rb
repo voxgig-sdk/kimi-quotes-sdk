@@ -65,6 +65,10 @@ module KimiQuotesConfig
               "type" => "`$INTEGER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "quote",
           "op" => {
             "list" => {
@@ -76,14 +80,19 @@ module KimiQuotesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quotes",
-                  "parts" => [
-                    "quotes",
+                  "segments" => [
+                    {
+                      "lit" => "quotes",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "quotes",
+                  ],
                 },
               ],
             },
@@ -96,14 +105,19 @@ module KimiQuotesConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/quote",
-                  "parts" => [
-                    "quote",
+                  "segments" => [
+                    {
+                      "lit" => "quote",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "quote",
+                  ],
                 },
               ],
             },

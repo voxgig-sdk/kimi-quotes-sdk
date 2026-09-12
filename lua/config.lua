@@ -53,6 +53,10 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "quote",
         ["op"] = {
           ["list"] = {
@@ -64,13 +68,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/quotes",
-                ["parts"] = {
-                  "quotes",
+                ["segments"] = {
+                  {
+                    ["lit"] = "quotes",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "quotes",
                 },
               },
             },
@@ -84,13 +93,18 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/quote",
-                ["parts"] = {
-                  "quote",
+                ["segments"] = {
+                  {
+                    ["lit"] = "quote",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "quote",
                 },
               },
             },
