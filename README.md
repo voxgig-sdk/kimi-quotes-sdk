@@ -105,7 +105,7 @@ local results, err = client:Quote():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/kimi-quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kimi-quotes-sdk/releases) |
+| TypeScript | `@voxgig-sdk/kimi-quotes-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kimi-quotes-sdk/releases) |
 | Python | `voxgig-sdk-kimi-quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kimi-quotes-sdk/releases) |
 | PHP | `voxgig-sdk/kimi-quotes` | publish pending — [install from git tag](https://github.com/voxgig-sdk/kimi-quotes-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/kimi-quotes-sdk/go` | `go get github.com/voxgig-sdk/kimi-quotes-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Quote():list()
 ### TypeScript
 
 ```ts
-import { KimiQuotesSDK } from '@voxgig-sdk/kimi-quotes'
+import { KimiQuotesSDK } from '@voxgig-sdk/kimi-quotes-sdk'
 
 const client = new KimiQuotesSDK()
 

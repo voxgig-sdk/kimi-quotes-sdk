@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { KimiQuotesSDK } from '@voxgig-sdk/kimi-quotes'
+import { KimiQuotesSDK } from '@voxgig-sdk/kimi-quotes-sdk'
 
 const client = new KimiQuotesSDK()
 ```
@@ -431,7 +431,7 @@ kimi-quotes/
 Import the SDK from the package root:
 
 ```ts
-import { KimiQuotesSDK } from '@voxgig-sdk/kimi-quotes'
+import { KimiQuotesSDK } from '@voxgig-sdk/kimi-quotes-sdk'
 ```
 
 ### Entity state
