@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { KimiQuotesSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('QuoteEntity', async () => {
 
     const live = 'TRUE' === process.env.KIMI_QUOTES_TEST_LIVE
     for (const op of ['list', 'load']) {
-      if (maybeSkipControl(t, 'entityOp', 'quote.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'quote.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set KIMI_QUOTES_TEST_QUOTE_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"context","req":false,"short":"The context in which the quote was said (e.g., team radio, interview)","type":"`$STRING`","index$":0},{"active":true,"name":"id","req":false,"short":"Unique identifier for the quote","type":"`$INTEGER`","index$":1},{"active":true,"name":"quote","req":true,"short":"The actual quote text from Kimi Räikkönen","type":"`$STRING`","index$":2},{"active":true,"name":"year","req":false,"short":"The year when the quote was said","type":"`$INTEGER`","index$":3}],"id":{"field":"id","name":"id"},"name":"quote","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{},"contract":{"id":"GET /quotes","json":"{\"operationId\":\"getAllQuotes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"example1\":{\"value\":[{\"context\":\"Team radio\",\"id\":1,\"quote\":\"Leave me alone, I know what I'm doing!\",\"year\":2012},{\"context\":\"Team radio\",\"id\":2,\"quote\":\"Just leave me alone, I know what to do.\",\"year\":2013}]}},\"schema\":{\"items\":{\"properties\":{\"context\":{\"description\":\"The context in which the quote was said (e.g., team radio, interview)\",\"example\":\"Team radio\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the quote\",\"example\":1,\"type\":\"integer\"},\"quote\":{\"description\":\"The actual quote text from Kimi Räikkönen\",\"example\":\"Leave me alone, I know what I'm doing!\",\"type\":\"string\"},\"year\":{\"description\":\"The year when the quote was said\",\"example\":2012,\"type\":\"integer\"}},\"required\":[\"quote\"],\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successfully retrieved all quotes\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message describing what went wrong\",\"example\":\"Internal server error\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"An unexpected error occurred while processing your request\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/quotes","segments":[{"lit":"quotes"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"active":true,"args":{},"contract":{"id":"GET /quote","json":"{\"operationId\":\"getRandomQuote\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"example1\":{\"value\":{\"context\":\"Team radio\",\"id\":1,\"quote\":\"Leave me alone, I know what I'm doing!\",\"year\":2012}}},\"schema\":{\"properties\":{\"context\":{\"description\":\"The context in which the quote was said (e.g., team radio, interview)\",\"example\":\"Team radio\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the quote\",\"example\":1,\"type\":\"integer\"},\"quote\":{\"description\":\"The actual quote text from Kimi Räikkönen\",\"example\":\"Leave me alone, I know what I'm doing!\",\"type\":\"string\"},\"year\":{\"description\":\"The year when the quote was said\",\"example\":2012,\"type\":\"integer\"}},\"required\":[\"quote\"],\"type\":\"object\"}}},\"description\":\"Successfully retrieved a random quote\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message describing what went wrong\",\"example\":\"Internal server error\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"An unexpected error occurred while processing your request\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/quote","segments":[{"lit":"quote"}],"select":{},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"quote","name__orig":"quote","Name":"Quote","name_":"quote","name-":"quote","NAME":"QUOTE","index$":0}, {"active":true,"entity":"quote","key$":"BasicQuoteFlow","kind":"basic","name":"BasicQuoteFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"quote_ref01"}}],"index$":0},{"active":true,"data":{},"input":{"ref":"quote_ref01","srcdatavar":"quote_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-quote_ref01"}}],"index$":1}]}, 'Quote')
     }
     const client = setup.client
     const struct = setup.struct
@@ -116,13 +115,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['KIMI_QUOTES_TEST_QUOTE_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'KIMI_QUOTES_TEST_QUOTE_ENTID': idmap,
     'KIMI_QUOTES_TEST_LIVE': 'FALSE',
@@ -133,7 +125,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.KIMI_QUOTES_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['KIMI_QUOTES_TEST_QUOTE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new KimiQuotesSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -145,7 +143,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -158,7 +157,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.KIMI_QUOTES_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

@@ -42,6 +42,12 @@ main: kit: entity: quote: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /quotes"
+            json: "{\"operationId\":\"getAllQuotes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"example1\":{\"value\":[{\"context\":\"Team radio\",\"id\":1,\"quote\":\"Leave me alone, I know what I'm doing!\",\"year\":2012},{\"context\":\"Team radio\",\"id\":2,\"quote\":\"Just leave me alone, I know what to do.\",\"year\":2013}]}},\"schema\":{\"items\":{\"properties\":{\"context\":{\"description\":\"The context in which the quote was said (e.g., team radio, interview)\",\"example\":\"Team radio\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the quote\",\"example\":1,\"type\":\"integer\"},\"quote\":{\"description\":\"The actual quote text from Kimi Räikkönen\",\"example\":\"Leave me alone, I know what I'm doing!\",\"type\":\"string\"},\"year\":{\"description\":\"The year when the quote was said\",\"example\":2012,\"type\":\"integer\"}},\"required\":[\"quote\"],\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successfully retrieved all quotes\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message describing what went wrong\",\"example\":\"Internal server error\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"An unexpected error occurred while processing your request\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/quotes"
           segments: [
@@ -60,6 +66,12 @@ main: kit: entity: quote: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /quote"
+            json: "{\"operationId\":\"getRandomQuote\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"examples\":{\"example1\":{\"value\":{\"context\":\"Team radio\",\"id\":1,\"quote\":\"Leave me alone, I know what I'm doing!\",\"year\":2012}}},\"schema\":{\"properties\":{\"context\":{\"description\":\"The context in which the quote was said (e.g., team radio, interview)\",\"example\":\"Team radio\",\"type\":\"string\"},\"id\":{\"description\":\"Unique identifier for the quote\",\"example\":1,\"type\":\"integer\"},\"quote\":{\"description\":\"The actual quote text from Kimi Räikkönen\",\"example\":\"Leave me alone, I know what I'm doing!\",\"type\":\"string\"},\"year\":{\"description\":\"The year when the quote was said\",\"example\":2012,\"type\":\"integer\"}},\"required\":[\"quote\"],\"type\":\"object\"}}},\"description\":\"Successfully retrieved a random quote\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message describing what went wrong\",\"example\":\"Internal server error\",\"type\":\"string\"},\"message\":{\"description\":\"Detailed error message\",\"example\":\"An unexpected error occurred while processing your request\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/quote"
           segments: [

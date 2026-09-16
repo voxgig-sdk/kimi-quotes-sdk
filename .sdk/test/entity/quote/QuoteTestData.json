@@ -5,19 +5,19 @@
         "context": "s28",
         "id": "QUOTE00",
         "quote": "s2a",
-        "year": "s2b"
+        "year": 43
       },
       "QUOTE01": {
         "context": "s50",
         "id": "QUOTE01",
         "quote": "s52",
-        "year": "s53"
+        "year": 83
       },
       "QUOTE02": {
         "context": "s78",
         "id": "QUOTE02",
         "quote": "s7a",
-        "year": "s7b"
+        "year": 123
       }
     }
   },
@@ -26,7 +26,176 @@
       "quote_ref01": {
         "context": "sa0",
         "quote": "sa2",
-        "year": "sa3"
+        "year": 163
+      }
+    }
+  },
+  "requests": {
+    "GET /quotes": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllQuotes",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "example1": {
+                    "value": [
+                      {
+                        "context": "Team radio",
+                        "id": 1,
+                        "quote": "Leave me alone, I know what I'm doing!",
+                        "year": 2012
+                      },
+                      {
+                        "context": "Team radio",
+                        "id": 2,
+                        "quote": "Just leave me alone, I know what to do.",
+                        "year": 2013
+                      }
+                    ]
+                  }
+                },
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "context": {
+                        "description": "The context in which the quote was said (e.g., team radio, interview)",
+                        "example": "Team radio",
+                        "type": "string"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the quote",
+                        "example": 1,
+                        "type": "integer"
+                      },
+                      "quote": {
+                        "description": "The actual quote text from Kimi Räikkönen",
+                        "example": "Leave me alone, I know what I'm doing!",
+                        "type": "string"
+                      },
+                      "year": {
+                        "description": "The year when the quote was said",
+                        "example": 2012,
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "quote"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successfully retrieved all quotes"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message describing what went wrong",
+                      "example": "Internal server error",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Detailed error message",
+                      "example": "An unexpected error occurred while processing your request",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /quote": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRandomQuote",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "examples": {
+                  "example1": {
+                    "value": {
+                      "context": "Team radio",
+                      "id": 1,
+                      "quote": "Leave me alone, I know what I'm doing!",
+                      "year": 2012
+                    }
+                  }
+                },
+                "schema": {
+                  "properties": {
+                    "context": {
+                      "description": "The context in which the quote was said (e.g., team radio, interview)",
+                      "example": "Team radio",
+                      "type": "string"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the quote",
+                      "example": 1,
+                      "type": "integer"
+                    },
+                    "quote": {
+                      "description": "The actual quote text from Kimi Räikkönen",
+                      "example": "Leave me alone, I know what I'm doing!",
+                      "type": "string"
+                    },
+                    "year": {
+                      "description": "The year when the quote was said",
+                      "example": 2012,
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "quote"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successfully retrieved a random quote"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "description": "Error message describing what went wrong",
+                      "example": "Internal server error",
+                      "type": "string"
+                    },
+                    "message": {
+                      "description": "Detailed error message",
+                      "example": "An unexpected error occurred while processing your request",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

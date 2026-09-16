@@ -1,12 +1,18 @@
 # KimiQuotes SDK feature factory
 
 from kimiquotes_sdk.feature.base_feature import KimiQuotesBaseFeature
+from kimiquotes_sdk.feature.ratelimit_feature import KimiQuotesRatelimitFeature
+from kimiquotes_sdk.feature.retry_feature import KimiQuotesRetryFeature
 from kimiquotes_sdk.feature.test_feature import KimiQuotesTestFeature
+from kimiquotes_sdk.feature.timeout_feature import KimiQuotesTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: KimiQuotesBaseFeature(),
+    "ratelimit": lambda: KimiQuotesRatelimitFeature(),
+    "retry": lambda: KimiQuotesRetryFeature(),
     "test": lambda: KimiQuotesTestFeature(),
+    "timeout": lambda: KimiQuotesTimeoutFeature(),
 }
 
 
